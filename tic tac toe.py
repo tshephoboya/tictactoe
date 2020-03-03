@@ -1,6 +1,7 @@
 import random
 board = [[1,2,3],[4,5,6],[7,8,9]]
 
+#Displays the board
 def DisplayBoard(board):
     for row in board:
         count = 1
@@ -14,7 +15,7 @@ def DisplayBoard(board):
 
 DisplayBoard(board)
 
-
+#Shows all the empty squares
 def MakeListOfFreeFields(board):
     free_sq =[]
     for row in board:
@@ -26,7 +27,7 @@ def MakeListOfFreeFields(board):
                 free_sq.append((_row, _col))
     print("Free squares:", free_sq)
 
-
+#Checks if any there are any winners.
 def VictoryFor(board, sign):
     num = 0
     for i in range(len(board)):
@@ -48,7 +49,7 @@ def VictoryFor(board, sign):
     else:
         return False
             
-
+#Makes a random move for the computer.
 def DrawMove(board):
     empty_spot = []
     for row in board:
@@ -61,7 +62,9 @@ def DrawMove(board):
         for i in row:
             if (random_spot == i):
                 row[row.index(random_spot)] = "X"
-    
+   
+
+#Prompts user to make a move and places a "O" in the position.
 def EnterMove(board):
     while (True):
         move = input("Enter move 1-9: ")
@@ -73,9 +76,7 @@ def EnterMove(board):
             print("Enter Valid number: ")
     
     for row in board:
-        #line
         if move in row:
-                #Shows that spot has not been played yet
                 row[row.index(move)] = "O"
                 break
         else:
