@@ -61,10 +61,16 @@ def DrawMove(board):
         for i in row:
             if (random_spot == i):
                 row[row.index(random_spot)] = "X"
-
     
 def EnterMove(board):
-    move = int(input("Enter move 1-9: "))
+    while (True):
+        move = input("Enter move 1-9: ")
+        try:
+            #The number entered is valid, Exit Loop
+            move = int(move)
+            break
+        except ValueError as e:
+            print("Enter Valid number: ")
     
     for row in board:
         #line
