@@ -1,5 +1,4 @@
 import random
-board = [[1,2,3],[4,5,6],[7,8,9]]
 
 #Displays the board
 def DisplayBoard(board):
@@ -13,7 +12,6 @@ def DisplayBoard(board):
             count += 1
    
 
-DisplayBoard(board)
 
 #Shows all the empty squares
 def MakeListOfFreeFields(board):
@@ -83,16 +81,27 @@ def EnterMove(board):
             played_spot = True
     
 
-has_won = False
-while not has_won:
-    MakeListOfFreeFields(board)
-    EnterMove(board)
-    if (VictoryFor(board, "O")):
-        break
-    DrawMove(board)
-    if (VictoryFor(board, "X")):
-        break
+def playgame():
+    board = [[1,2,3],[4,5,6],[7,8,9]]
+    DisplayBoard(board)
+    has_won = False
+    while not has_won:
+        MakeListOfFreeFields(board)
+        EnterMove(board)
+        if (VictoryFor(board, "O")):
+            break
+        DrawMove(board)
+        if (VictoryFor(board, "X")):
+            break
+        DisplayBoard(board)
 
     DisplayBoard(board)
+    answer = input("do you want to play again y/n: ")
+    answer.lower()
+    if (answer != 'y'):
+        print("Bye")
+    else:
+        playgame()
 
-    
+playgame()
+        
